@@ -4,3 +4,17 @@
 
 // JSX
 // A syntax that contains javaScript as well as HTML
+
+// GIT
+// git clone url - to take a clone from git
+
+// git pull - to pull new changes from git
+// git add . - to stage or lock new changes
+// git commit -m 'message' - to add commit message to git
+// git push - to push new changes to git
+
+// git checkout branch-name - to checkout to another branch
+// git fetch - to fetch all new branches created on git
+
+// commit messages should be proper and should be related 
+// to changed that has been done on particular branch
