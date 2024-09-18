@@ -16,5 +16,11 @@
 // git checkout branch-name - to checkout to another branch
 // git fetch - to fetch all new branches created on git
 
-// commit messages should be proper and should be related 
+// git stash - to stash or store working directory
+// git stash apply - to apply latest or last stashed changes
+// git stash pop - to apply and delete latest or last stashed changes
+
+// PR - Pull Request or Merge Request
+
+// commit messages should be proper and should be related
 // to changed that has been done on particular branch
