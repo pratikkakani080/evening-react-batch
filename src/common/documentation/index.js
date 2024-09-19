@@ -24,3 +24,20 @@
 
 // commit messages should be proper and should be related
 // to changed that has been done on particular branch
+
+// Lifecycle of a component
+// Mounting
+// Updating
+// Unmounting
+
+
+// Hooks
+// React inbuilt functions
+// function that starts with 'use' keyword
+// useState
+// useEffect
+// useContext
+
+// Hooks should always define at top of the component
+// never call or use Hooks in loops
+// never define one hook into another 
