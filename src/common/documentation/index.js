@@ -41,3 +41,13 @@
 // Hooks should always define at top of the component
 // never call or use Hooks in loops
 // never define one hook into another 
+
+// to setup a router
+// Required function to create old routing
+// BrowserRouter
+// Routes
+// Route
+
+// Required functions to create new routing
+// createBrowserRouter
+// RouterProvider

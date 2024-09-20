@@ -4,7 +4,7 @@ import { buttonName } from "../../utils/static";
 
 // JSX
 function Button(props) {
-  console.log("props**", props);
+  // console.log("props**", props);
 
   // local variable
   const local = "test";
