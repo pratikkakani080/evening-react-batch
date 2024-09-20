@@ -51,3 +51,23 @@
 // Required functions to create new routing
 // createBrowserRouter
 // RouterProvider
+
+// HomeWork
+// Setup new project
+// Routing setup
+// Create 5 routes
+    // Signup
+        // First name
+        // Middle name
+        // Last name
+        // Email
+        // User name (Optional)
+        // Phone (Optional)
+        // Password
+        // Confirm Password
+        // NewsLetter (Checkbox)
+    // Login
+        // Email
+        // Password
+        // Remember me (Checkbox)
+    // Dashboard
