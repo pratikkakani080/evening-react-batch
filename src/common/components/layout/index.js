@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Button from "../button";
 import Input from "../input";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
-function Layout() {
+function Layout(props) {
   // your javascript will be here
   const [state, setState] = useState("test");
   const [data, setData] = useState({});
   const [count, setCount] = useState(0);
 
-  console.log("component rerendering**");
+  console.log("component rerendering**", props);
 
   useEffect(() => {
     console.log("running on mounting**");
@@ -30,6 +30,7 @@ function Layout() {
       {state}
       <Button className={"colorPink"} onClick={handleOnClick} />
       <Button buttonName={"First"} />
+      <Outlet />
     </div>
   );
 }

@@ -4,20 +4,37 @@ import Layout from "..";
 import Dashboard from "../../../../modules/dashboard";
 import ContactUs from "../../../../modules/contactUs";
 import Login from "../../../../modules/login";
+import Analytics from "../../../../modules/dashboard/analytics";
+import Blog from "../../../../modules/blog";
+import BlogDetails from "../../../../modules/blog/blogDetails";
 
 function NewRouting() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-    },
-    {
-      path: "/contactus",
-      element: <ContactUs />,
+      children: [
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+        },
+        {
+          path: "/dashboard/analytics",
+          element: <Analytics />,
+        },
+        {
+          path: "/contactus",
+          element: <ContactUs />,
+        },
+        {
+          path: "/blog",
+          element: <Blog />,
+        },
+        {
+          path: "/blogdetails/:id",
+          element: <BlogDetails />,
+        },
+      ],
     },
     {
       path: "/login",
