@@ -19,7 +19,7 @@ export const blogData = [
 function Blog() {
   const navigate = useNavigate();
   const handleClick = (blog) => {
-    navigate(`/blogdetails/${blog.id}`);
+    navigate(`/blogdetails/${blog.id}?blogId=${blog.id}`);
   };
   return (
     <div>

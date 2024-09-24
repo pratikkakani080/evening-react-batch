@@ -10,7 +10,7 @@ function Button(props) {
   const local = "test";
   return (
     <button
-      style={{ backgroundColor: props["color"] }}
+      style={{ backgroundColor: props["color"], width: "150px" }}
       className={props.className || "button-bgcolor"}
       onClick={props.onClick}
     >

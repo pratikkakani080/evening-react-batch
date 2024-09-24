@@ -5,8 +5,8 @@ import OldRouting from "./common/components/layout/routing/oldRouting";
 function App() {
   return (
     <div className="App">
-      {/* <OldRouting /> */}
-      <NewRouting />
+      <OldRouting />
+      {/* <NewRouting /> */}
     </div>
   );
 }

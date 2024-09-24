@@ -1,7 +1,12 @@
 import React from "react";
 
-function Input() {
-  return <input type="text"></input>;
+function Input({ type, name, onChange, value, inputLabel }) {
+  return (
+    <div>
+      <label htmlFor={name}>{inputLabel}</label>
+      <input type={type} name={name} onChange={onChange} value={value} />
+    </div>
+  );
 }
 
 export default Input;

@@ -7,6 +7,7 @@ import Login from "../../../../modules/login";
 import Analytics from "../../../../modules/dashboard/analytics";
 import BlogDetails from "../../../../modules/blog/blogDetails";
 import Blog from "../../../../modules/blog";
+import Register from "../../../../modules/register";
 
 function OldRouting() {
   return (
@@ -20,6 +21,7 @@ function OldRouting() {
           <Route path="/blogdetails/:id" element={<BlogDetails />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
