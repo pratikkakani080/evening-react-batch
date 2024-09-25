@@ -1,18 +1,48 @@
 import React, { useState } from "react";
 import Input from "../../common/components/input";
 import Button from "../../common/components/button";
+import { getData, storeData } from "../../common/utils/storage";
 
 function Register() {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState();
-  console.log("**", fName, lName, email, password, confirmPassword);
+  // const [fName, setFName] = useState("");
+  // const [lName, setLName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // console.log("**", fName, lName, email, password, confirmPassword);
 
-  const handleOnClick = () => {
-    const body = { fName, lName, email, password, confirmPassword };
-    // localStorage.setItem()
+  const [userInfo, setUserInfo] = useState({});
+
+  console.log("userInfo_out**", userInfo);
+
+  const clearForm = () => {
+    setUserInfo({
+      fName: "",
+      lName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    // setFName("");
+    // setLName("");
+    // setEmail("");
+    // setPassword("");
+    // setConfirmPassword("");
+  };
+
+  const handleSubmit = () => {
+    let users = getData("users") || [];
+    users.push(userInfo);
+    storeData("users", users);
+    clearForm();
+  };
+
+  const handleOnChange = (event) => {
+    const data = {
+      ...userInfo,
+      [`${event.target.name}`]: event.target.value,
+    };
+    setUserInfo(data);
   };
 
   return (
@@ -27,33 +57,43 @@ function Register() {
         inputLabel={"First Name:"}
         type={"text"}
         name={"fName"}
-        onChange={(ev) => setFName(ev.target.value)}
+        value={userInfo.fName}
+        // onChange={(ev) => setFName(ev.target.value)}
+        onChange={handleOnChange}
       />
       <Input
         inputLabel={"Last Name:"}
         type={"text"}
         name={"lName"}
-        onChange={(ev) => setLName(ev.target.value)}
+        value={userInfo.lName}
+        // onChange={(ev) => setLName(ev.target.value)}
+        onChange={handleOnChange}
       />
       <Input
         inputLabel={"Email:"}
         type={"email"}
         name={"email"}
-        onChange={(ev) => setEmail(ev.target.value)}
+        value={userInfo.email}
+        // onChange={(ev) => setEmail(ev.target.value)}
+        onChange={handleOnChange}
       />
       <Input
         inputLabel={"Password:"}
         type={"password"}
         name={"password"}
-        onChange={(ev) => setPassword(ev.target.value)}
+        value={userInfo.password}
+        // onChange={(ev) => setPassword(ev.target.value)}
+        onChange={handleOnChange}
       />
       <Input
         inputLabel={"Confirm Password:"}
         type={"password"}
         name={"confirmPassword"}
-        onChange={(ev) => setConfirmPassword(ev.target.value)}
+        value={userInfo.confirmPassword}
+        // onChange={(ev) => setConfirmPassword(ev.target.value)}
+        onChange={handleOnChange}
       />
-      <Button buttonName={"Submit"} color={"white"} onClick={handleOnClick} />
+      <Button buttonName={"Submit"} color={"white"} onClick={handleSubmit} />
     </div>
   );
 }

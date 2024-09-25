@@ -7,6 +7,7 @@ import Login from "../../../../modules/login";
 import Analytics from "../../../../modules/dashboard/analytics";
 import Blog from "../../../../modules/blog";
 import BlogDetails from "../../../../modules/blog/blogDetails";
+import Register from "../../../../modules/register";
 
 function NewRouting() {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ function NewRouting() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
     },
   ]);
   return <RouterProvider router={router} />;

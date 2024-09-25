@@ -1,7 +1,16 @@
+export const storeData = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+  sessionStorage.setItem(key, JSON.stringify(value));
+};
 
-// localStorage.setItem()
+export const getData = (key) => {
+  return (
+    JSON.parse(localStorage.getItem(key)) ||
+    JSON.parse(sessionStorage.getItem(key))
+  );
+};
 
-// localStorage.getItem()
-
-// localStorage.clear()
-
+export const clearStorage = () => {
+  localStorage.clear();
+  sessionStorage.clear();
+};
