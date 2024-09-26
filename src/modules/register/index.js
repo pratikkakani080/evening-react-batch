@@ -11,9 +11,15 @@ function Register() {
   // const [confirmPassword, setConfirmPassword] = useState("");
   // console.log("**", fName, lName, email, password, confirmPassword);
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    fName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  console.log("userInfo_out**", userInfo);
+  console.log("**", errors);
 
   const clearForm = () => {
     setUserInfo({
@@ -30,19 +36,37 @@ function Register() {
     // setConfirmPassword("");
   };
 
+  const isCheckEmpty = () => {
+    let isFormValid = true;
+    let error = {};
+    for (const key in userInfo) {
+      if (userInfo[key] === "") {
+        isFormValid = false;
+        error[key] = true;
+      }
+    }
+    setErrors(error);
+    return isFormValid;
+  };
+
   const handleSubmit = () => {
-    let users = getData("users") || [];
-    users.push(userInfo);
-    storeData("users", users);
-    clearForm();
+    if (isCheckEmpty()) {
+      // let userInfo = {fName, lName, email, password, confirmPassword}
+      let users = getData("users") || [];
+      users.push(userInfo);
+      storeData("users", users);
+      clearForm();
+    }
   };
 
   const handleOnChange = (event) => {
-    const data = {
-      ...userInfo,
+    let data = {};
+    Object.assign(data, userInfo, {
       [`${event.target.name}`]: event.target.value,
-    };
+    });
+    // const data = { ...userInfo, [`${event.target.name}`]: event.target.value };
     setUserInfo(data);
+    setErrors({ ...errors, [`${event.target.name}`]: false });
   };
 
   return (
@@ -60,6 +84,7 @@ function Register() {
         value={userInfo.fName}
         // onChange={(ev) => setFName(ev.target.value)}
         onChange={handleOnChange}
+        isError={errors.fName}
       />
       <Input
         inputLabel={"Last Name:"}
@@ -76,6 +101,7 @@ function Register() {
         value={userInfo.email}
         // onChange={(ev) => setEmail(ev.target.value)}
         onChange={handleOnChange}
+        isError={errors.email}
       />
       <Input
         inputLabel={"Password:"}
@@ -84,6 +110,7 @@ function Register() {
         value={userInfo.password}
         // onChange={(ev) => setPassword(ev.target.value)}
         onChange={handleOnChange}
+        isError={errors.password}
       />
       <Input
         inputLabel={"Confirm Password:"}
@@ -92,6 +119,7 @@ function Register() {
         value={userInfo.confirmPassword}
         // onChange={(ev) => setConfirmPassword(ev.target.value)}
         onChange={handleOnChange}
+        isError={errors.confirmPassword}
       />
       <Button buttonName={"Submit"} color={"white"} onClick={handleSubmit} />
     </div>
