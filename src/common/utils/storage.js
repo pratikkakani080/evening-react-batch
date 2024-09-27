@@ -6,7 +6,8 @@ export const storeData = (key, value) => {
 export const getData = (key) => {
   return (
     JSON.parse(localStorage.getItem(key)) ||
-    JSON.parse(sessionStorage.getItem(key))
+    JSON.parse(sessionStorage.getItem(key)) ||
+    []
   );
 };
 

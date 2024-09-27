@@ -8,6 +8,7 @@ import Analytics from "../../../../modules/dashboard/analytics";
 import Blog from "../../../../modules/blog";
 import BlogDetails from "../../../../modules/blog/blogDetails";
 import Register from "../../../../modules/register";
+import Users from "../../../../modules/users";
 
 function NewRouting() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function NewRouting() {
         {
           path: "/blogdetails/:id",
           element: <BlogDetails />,
+        },
+        {
+          path: "/users",
+          element: <Users />,
         },
       ],
     },

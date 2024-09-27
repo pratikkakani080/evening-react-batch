@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../common/components/input";
 import Button from "../../common/components/button";
 import { getData, storeData } from "../../common/utils/storage";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Register() {
   // const [fName, setFName] = useState("");
@@ -9,17 +11,28 @@ function Register() {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
-  // console.log("**", fName, lName, email, password, confirmPassword);
+
+  const [params] = useSearchParams();
+  const userId = params.get("id");
+
+  const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
     fName: "",
+    lName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
 
-  console.log("**", errors);
+  useEffect(() => {
+    const storedData = getData("users");
+    if (userId) {
+      const user = storedData.find((el) => el.id === userId);
+      setUserInfo(user);
+    }
+  }, []);
 
   const clearForm = () => {
     setUserInfo({
@@ -53,9 +66,16 @@ function Register() {
     if (isCheckEmpty()) {
       // let userInfo = {fName, lName, email, password, confirmPassword}
       let users = getData("users") || [];
-      users.push(userInfo);
+      if (userId) {
+        users = users.map((el) => el.id === userId ? userInfo : el);
+      } else {
+        users.push({ ...userInfo, id: uuidv4() });
+      }
       storeData("users", users);
       clearForm();
+      if (userId) {
+        navigate("/users");
+      }
     }
   };
 
