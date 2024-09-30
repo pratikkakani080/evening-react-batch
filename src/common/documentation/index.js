@@ -71,3 +71,11 @@
         // Password
         // Remember me (Checkbox)
     // Dashboard
+
+// To do list
+// Input - text
+// button - to create data
+// create a list of to do items
+    // provide edit and delete button for each item
+    // edit will do a inline edit
+    // delete will do delete with confirmation

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getData } from "../../common/utils/storage";
+import { getData, storeData } from "../../common/utils/storage";
 import { useNavigate } from "react-router-dom";
 
 function Users() {
@@ -12,6 +12,18 @@ function Users() {
 
   const handleEdit = (user) => {
     navigate(`/register?id=${user.id}`);
+  };
+
+  const handleDelete = (id) => {
+    const confirmation = window.confirm(
+      "are you sure you want to delete this data?"
+    );
+    if (confirmation) {
+      const data = getData("users");
+      const filteredData = data.filter((el) => el.id !== id);
+      storeData("users", filteredData);
+      setStoredData(filteredData);
+    }
   };
 
   return (
@@ -30,24 +42,26 @@ function Users() {
           )}
         </thead>
         <tbody>
-          {storedData.length > 0
-            ? storedData.map((el) => {
-                return (
-                  <tr>
-                    <td>{el.fName}</td>
-                    <td>{el.lName}</td>
-                    <td>{el.email}</td>
-                    <td>{el.password}</td>
-                    <td>
-                      <button onClick={() => handleEdit(el)}>Edit</button>
-                    </td>
-                    <td>
-                      <button>Delete</button>
-                    </td>
-                  </tr>
-                );
-              })
-            : "No data found"}
+          {storedData.length > 0 ? (
+            storedData.map((el) => (
+              <tr key={el.id}>
+                <td>{el.fName}</td>
+                <td>{el.lName}</td>
+                <td>{el.email}</td>
+                <td>{el.password}</td>
+                <td>
+                  <button onClick={() => handleEdit(el)}>Edit</button>
+                </td>
+                <td>
+                  <button onClick={() => handleDelete(el.id)}>Delete</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td>No data found</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
