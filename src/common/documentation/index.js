@@ -52,6 +52,17 @@
 // createBrowserRouter
 // RouterProvider
 
+// To pass data from parent to child
+        // use props
+// To pass data from child to parent
+        // state uplifting
+        // callback function
+        // Prop drilling
+
+        // least option
+            // context API
+            // redux
+
 // HomeWork
 // Setup new project
 // Routing setup
@@ -79,3 +90,9 @@
     // provide edit and delete button for each item
     // edit will do a inline edit
     // delete will do delete with confirmation
+
+// Calculator
+
+// E-commerce web
+
+// Reference web
