@@ -94,5 +94,9 @@
 // Calculator
 
 // E-commerce web
+    // Product listing
+    // Add to cart
+    // header ==> provide cart icon with product count
+    // product count on should update real time
 
 // Reference web
