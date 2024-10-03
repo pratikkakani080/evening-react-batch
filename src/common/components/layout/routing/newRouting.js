@@ -10,6 +10,7 @@ import BlogDetails from "../../../../modules/blog/blogDetails";
 import Register from "../../../../modules/register";
 import Users from "../../../../modules/users";
 import Parent from "../../../../modules/parent";
+import Recipes from "../../../../modules/recipes";
 
 function NewRouting() {
   const router = createBrowserRouter([
@@ -54,6 +55,10 @@ function NewRouting() {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/recipes",
+      element: <Recipes />,
     },
   ]);
   return <RouterProvider router={router} />;
