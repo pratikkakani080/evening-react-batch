@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ApiInstance } from "../../common/utils/api";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
+  const ref = useRef({});
+
   useEffect(() => {
     // apiCallByFetch();
     apiCallByAxios();
   }, []);
+
+  const handleTitleClick = () => {
+    ref.current.style.backgroundColor = "red";
+    console.log("ref**", ref.current.style.backgroundColor);
+  };
 
   const apiCallByAxios = async () => {
     const res = await ApiInstance.get("/recipes");
@@ -25,7 +32,9 @@ function Recipes() {
       {recipes.map((recipe) => {
         return (
           <>
-            <h4>{recipe.name}</h4>
+            <h4 ref={ref} onClick={handleTitleClick}>
+              {recipe.name}
+            </h4>
             <img src={recipe.image} height={100} width={100} />
           </>
         );

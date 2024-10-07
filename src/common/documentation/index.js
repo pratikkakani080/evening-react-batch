@@ -38,6 +38,13 @@
 // useEffect
 // useContext
 
+// Hooks to use for code optimization and performance improvement
+// useRef
+// useMemo
+// useCallBack
+// React memo
+// useReducer
+
 // Hooks should always define at top of the component
 // never call or use Hooks in loops
 // never define one hook into another 
