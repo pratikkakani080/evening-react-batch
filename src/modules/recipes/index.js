@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ApiInstance } from "../../common/utils/api";
+import Input from "../../common/components/input";
+import RecipeCard from "./recipeCard";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
+  const [testValue, setTestValue] = useState();
   const ref = useRef({});
+
+  console.log("ref**", ref);
 
   useEffect(() => {
     // apiCallByFetch();
@@ -11,8 +16,9 @@ function Recipes() {
   }, []);
 
   const handleTitleClick = () => {
-    ref.current.style.backgroundColor = "red";
-    console.log("ref**", ref.current.style.backgroundColor);
+    // ref.current.innerText = "red";
+    // ref.current.style.backgroundColor = "red";
+    console.log("ref**", ref);
   };
 
   const apiCallByAxios = async () => {
@@ -29,13 +35,25 @@ function Recipes() {
   };
   return (
     <div>
+      <Input
+        type="text"
+        name="test"
+        onChange={(e) => {
+          ref.current = e.target.value;
+          setTestValue(e.target.value);
+        }}
+        value={testValue}
+        inputLabel="test"
+        isError={false}
+      />
       {recipes.map((recipe) => {
         return (
           <>
-            <h4 ref={ref} onClick={handleTitleClick}>
-              {recipe.name}
-            </h4>
-            <img src={recipe.image} height={100} width={100} />
+            <RecipeCard
+              handleClick={handleTitleClick}
+              recipe={recipe}
+              ref={ref}
+            />
           </>
         );
       })}
