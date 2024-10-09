@@ -11,6 +11,7 @@ import Register from "../../../../modules/register";
 import Users from "../../../../modules/users";
 import Parent from "../../../../modules/parent";
 import Recipes from "../../../../modules/recipes";
+import MemoExample from "../../../../modules/memoExample";
 
 function NewRouting() {
   const router = createBrowserRouter([
@@ -59,6 +60,10 @@ function NewRouting() {
     {
       path: "/recipes",
       element: <Recipes />,
+    },
+    {
+      path: "/memo",
+      element: <MemoExample />,
     },
   ]);
   return <RouterProvider router={router} />;
