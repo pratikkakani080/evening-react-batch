@@ -40,9 +40,9 @@
 
 // Hooks to use for code optimization and performance improvement
 // useRef
-// useMemo
-// useCallBack
-// React memo
+// useMemo - use to cache values
+// useCallBack - use to cache functions
+// React memo - use to components
 // useReducer
 
 // Hooks should always define at top of the component
