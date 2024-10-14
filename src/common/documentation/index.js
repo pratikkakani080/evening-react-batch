@@ -45,6 +45,13 @@
 // React memo - use to components
 // useReducer
 
+// useSelector - to fetch data from store (works as a reciever)
+// useDispatch - to trigger an action (works as a transmitter)
+
+// Redux
+// Graphql
+// Test cases
+
 // Hooks should always define at top of the component
 // never call or use Hooks in loops
 // never define one hook into another 
