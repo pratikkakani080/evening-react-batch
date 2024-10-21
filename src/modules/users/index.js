@@ -1,9 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { getData, storeData } from "../../common/utils/storage";
 import { useNavigate } from "react-router-dom";
 
+const localInitialState = {
+  data1: "value1",
+  data2: 0,
+  data3: [],
+  data4: {},
+  data5: false,
+};
+
+const localReducer = (state, action) => {
+  switch (action.type) {
+    case "string":
+      state.data1 = action.payload;
+      return state;
+    case "number":
+      state.data2 = action.payload;
+      return state;
+    case "array":
+      state.data3 = action.payload;
+      return state;
+    case "object":
+      state.data4 = action.payload;
+      return state;
+    case "boolean":
+      state.data5 = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
 function Users() {
   const [storedData, setStoredData] = useState([]);
+  const [localState, localDispatch] = useReducer(
+    localReducer,
+    localInitialState
+  );
+  console.log("localState********", localState);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,6 +101,38 @@ function Users() {
           )}
         </tbody>
       </table>
+      <button
+        onClick={() => localDispatch({ type: "string", payload: "test" })}
+      >
+        change data 1
+      </button>
+      <button
+        onClick={() =>
+          localDispatch({ type: "number", payload: localState.data2 + 1 })
+        }
+      >
+        change data 2
+      </button>
+      <button
+        onClick={() =>
+          localDispatch({
+            type: "array",
+            payload: [...localState.data3, 4],
+          })
+        }
+      >
+        change data 3
+      </button>
+      <button
+        onClick={() =>
+          localDispatch({ type: "object", payload: { test: "value" } })
+        }
+      >
+        change data 4
+      </button>
+      <button onClick={() => localDispatch({ type: "boolean", payload: true })}>
+        change data 5
+      </button>
     </div>
   );
 }
