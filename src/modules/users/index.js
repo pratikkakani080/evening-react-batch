@@ -33,6 +33,31 @@ const localReducer = (state, action) => {
   }
 };
 
+const Renderer = ({ handleDelete, handleEdit, storedData }) => {
+  if (storedData.length > 0) {
+    return storedData.map((el) => (
+      <tr key={el.id}>
+        <td>{el.fName}</td>
+        <td>{el.lName}</td>
+        <td>{el.email}</td>
+        <td>{el.password}</td>
+        <td>
+          <button onClick={() => handleEdit(el)}>Edit</button>
+        </td>
+        <td>
+          <button onClick={() => handleDelete(el.id)}>Delete</button>
+        </td>
+      </tr>
+    ));
+  } else {
+    return (
+      <tr>
+        <td>No data found</td>
+      </tr>
+    );
+  }
+};
+
 function Users() {
   const [storedData, setStoredData] = useState([]);
   const [localState, localDispatch] = useReducer(
@@ -79,26 +104,7 @@ function Users() {
           )}
         </thead>
         <tbody>
-          {storedData.length > 0 ? (
-            storedData.map((el) => (
-              <tr key={el.id}>
-                <td>{el.fName}</td>
-                <td>{el.lName}</td>
-                <td>{el.email}</td>
-                <td>{el.password}</td>
-                <td>
-                  <button onClick={() => handleEdit(el)}>Edit</button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(el.id)}>Delete</button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td>No data found</td>
-            </tr>
-          )}
+          <Renderer {...{ storedData, handleEdit, handleDelete }} />
         </tbody>
       </table>
       <button
